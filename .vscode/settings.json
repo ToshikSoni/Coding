@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "stdio.h": "c",
+    "string.h": "c",
+    "iostream": "cpp",
+    "ostream": "cpp"
+  },
+  "java.debug.settings.onBuildFailureProceed": true,
+  "java.format.settings.url": ".vscode/eclipse-java-google-style.xml",
+  "[java]": {
+    "editor.insertSpaces": false
+  }
+}
