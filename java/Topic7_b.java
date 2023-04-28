@@ -1,6 +1,6 @@
 import testpackage.foundation;
 
-public class a1q20 {
+public class Topic7_b {
 	public static void main(String[] args) {
 		foundation f = new foundation();
 		System.out.println("Value of Var1 can't be accessed as it is private."

@@ -1,4 +1,4 @@
-public class a1q7 {
+public class Topic3_b {
 	public static void main(String args[]) {
 		int temp = args.length;
 		if (temp == 0)

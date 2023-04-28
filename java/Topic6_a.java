@@ -1,4 +1,4 @@
-public class a1q17 {
+public class Topic6_a {
 	static class Animal {
 		public void eat() {
 			System.out.println("Animal eat.\n");

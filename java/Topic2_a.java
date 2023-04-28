@@ -1,4 +1,4 @@
-public class a1q4 {
+public class Topic2_a {
     public static void main(String[] args) {
         int a = 25;
         double b = 5.8;

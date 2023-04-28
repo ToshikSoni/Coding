@@ -1,4 +1,4 @@
-public class a1q19 {
+public class Topic7_a {
 	abstract static class GeneralBank {
 		abstract double getSavingInterestRate();
 

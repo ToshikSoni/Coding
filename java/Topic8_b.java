@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class a1q23 {
+public class Topic8_b {
 	public static void main(String[] args) {
 		try {
 			FileWriter fout = new FileWriter("file.txt");

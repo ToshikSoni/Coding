@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class a1q15 {
+public class Topic5_a {
 	public static class Box {
 		private double width, height, depth;
 

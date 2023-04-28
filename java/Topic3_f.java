@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class a1q10 {
+public class Topic3_f {
 	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter number: ");

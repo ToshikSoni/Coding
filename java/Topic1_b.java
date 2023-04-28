@@ -1,4 +1,4 @@
-public class a1q2 {
+public class Topic1_b {
     public static void main(String args[]) {
         System.out.println("HelloWorld");
     }

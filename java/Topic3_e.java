@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class a1q9 {
+public class Topic3_e {
 	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter number: ");

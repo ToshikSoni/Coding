@@ -1,4 +1,4 @@
-public class a1q18 {
+public class Topic6_b {
 	static class Shape {
 		public void draw() {
 			System.out.println("Drawing Shape\n");

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class a1q11 {
+public class Topic3_g {
 	public static void main(String args[]) {
 		char c = 'y';
 		Scanner sc = new Scanner(System.in);

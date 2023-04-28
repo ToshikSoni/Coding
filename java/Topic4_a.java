@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class a1q12 {
+public class Topic4_a {
 	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter size of array: ");

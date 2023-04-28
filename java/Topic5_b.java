@@ -1,4 +1,4 @@
-public class a1q16 {
+public class Topic5_b {
 	public static class Calculator {
 		public static int powerInt(int num1, int num2) {
 			int power = 1;

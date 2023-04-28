@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class a1q6 {
+public class Topic3_a {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter gender(press m for male and press f for female): ");

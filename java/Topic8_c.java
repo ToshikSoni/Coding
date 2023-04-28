@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class a1q24 {
+public class Topic8_c {
 	public static void main(String[] args) {
 		try {
 			FileReader fr = new FileReader("input.txt");
@@ -17,14 +17,12 @@ public class a1q24 {
 			FileWriter fw = new FileWriter("output.txt");
 			int count = 0;
 			for (int i = 0; i < arr.length; i++) {
-				for (int j = 0; j < arr.length; j++) {
-					if (arr[i] == arr[j]) {
+				for (int j = 0; j < arr.length; j++)
+					if (arr[i] == arr[j])
 						if (i != j) {
 							System.out.println("in count: " + arr[i] + " " + arr[j]);
 							count++;
 						}
-					}
-				}
 				fw.write(arr[i] + " " + count + '\n');
 				count = 0;
 			}
