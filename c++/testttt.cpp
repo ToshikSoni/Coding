@@ -1,45 +1,32 @@
 #include <iostream>
-#include <cstdlib>
-#include <string.h>
+#include <fstream>
 using namespace std;
-class New_delete
+template <typename t1, typename t2, typename t3, typename t4, typename t5>
+class Employee
 {
-    string name;
-    int age;
+    t1 name;
+    t2 empid;
+    t3 age;
+    t4 sal;
+    t5 department;
 
 public:
-    New_delete()
+    Employee(t1 n, t2 e, t3 a, t4 s, t5 d)
     {
-        name = '\0';
-        age = 0;
+        name = n;
+        empid = e;
+        age = a;
+        sal = s;
+        department = d;
     }
-    New_delete(string name, int age)
+    void show()
     {
-        this->name = name;
-        this->age = age;
-    }
-    void display()
-    {
-        cout << "Name : " << name << endl;
-        cout << "Age :" << age << endl;
-    }
-    void *operator new(size_t s)
-    {
-        cout << "Overloading new operator with size:" << s << endl;
-        void *p = ::operator new(s);
-        return p;
-    }
-    void operator delete(void *p)
-    {
-        cout << "Destructor called . " << endl;
-        free(p);
+        cout << "name: " << name << "\tempid: " << empid << "\tage: " << age << "\tsal: " << sal << "department: "
+             << department << endl;
     }
 };
 int main()
 {
-    New_delete *p = new New_delete("Mitali", 18);
-    cout << sizeof(p) << endl;
-    p->display();
-    delete p;
-    cout << sizeof(p) << endl;
+    Employee<string, int, int, int, string> e("Toshik Soni", 01, 18, 1500, "Hello");
+    e.show();
 }

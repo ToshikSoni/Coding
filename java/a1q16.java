@@ -10,7 +10,7 @@ public class a1q16 {
 		public static double powerDouble(double num1, int num2) {
 			double power = 1;
 			for (int i = 1; i <= num2; i++)
-				power = power * num1;
+				power *= num1;
 			return power;
 		}
 	}

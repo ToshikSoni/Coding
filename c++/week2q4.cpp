@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-class MyClass
+class Base
 {
 public:
     void printAddress()
@@ -10,7 +10,7 @@ public:
 };
 int main()
 {
-    MyClass obj1;
+    Base obj1;
     obj1.printAddress();
     return 0;
 } // Static member functions are not associated with any particular object,

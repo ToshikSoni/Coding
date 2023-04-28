@@ -21,6 +21,6 @@ public class a1q13 {
 			}
 		}
 		if (a == 0)
-			System.out.println("-1");
+			System.out.println(-1);
 	}
 }

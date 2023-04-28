@@ -34,6 +34,5 @@ int main()
     b.get_data();
     b.show_data();
     cout << endl
-         << b[2] << endl
-         << b[3];
+         << b[2] << endl;
 }

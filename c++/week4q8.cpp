@@ -15,8 +15,6 @@ public:
 };
 int main()
 {
-    Base b;
-    b.operator new(4);
-    cout << "Dynamically allocated size of object: " << sizeof(b) << endl;
-    b.operator delete;
+    Base *ptr = new Base();
+    delete ptr;
 }
