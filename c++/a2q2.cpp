@@ -4,11 +4,11 @@ class HashTable
 {
     int ts;
     int **table;
-    int HashFn(int key) // calculates the index where the key should be stored
+    int HashFn(int key)
     {
         return key % ts;
     }
-    void rehash() // increases the size of table and reallocate the keys according to the new table
+    void rehash()
     {
         int temp[ts], oldts = ts;
         for (int i = 0; i < ts; i++)
@@ -25,14 +25,14 @@ class HashTable
     }
 
 public:
-    HashTable(int default_ts = 7) // creates the hash table
+    HashTable(int default_ts = 7)
     {
         ts = default_ts;
         table = new int *[ts];
         for (int i = 0; i < ts; i++)
             table[i] = NULL;
     }
-    void insert(int key) // insert the key in the table
+    void insert(int key)
     {
         bool flag = false;
         int idx = HashFn(key);
@@ -42,9 +42,10 @@ public:
             table[idx] = new int(key);
             return;
         }
-        else // linear probing
+        else
         {
-            int probe_idx = (idx + 1) % ts;
+            int i = 1;
+            int probe_idx = (idx + i * i) % ts;
             while (probe_idx != idx)
             {
                 if (table[probe_idx] == NULL)
@@ -53,16 +54,17 @@ public:
                     table[probe_idx] = new int(key);
                     return;
                 }
-                probe_idx = (probe_idx + 1) % ts;
+                i++;
+                probe_idx = (probe_idx + i * i) % ts;
             }
         }
-        if (flag == false) // rehash if the table is full
+        if (flag == false)
         {
             rehash();
             insert(key);
         }
     }
-    void print() // prints the table
+    void print()
     {
         for (int i = 0; i < ts; i++)
         {
@@ -74,7 +76,7 @@ public:
             cout << endl;
         }
     }
-    void search(int key) // search for a key
+    void search(int key)
     {
         int idx = HashFn(key);
         if (table[idx] == NULL)
@@ -91,7 +93,8 @@ public:
             }
             else
             {
-                int probe_idx = (idx + 1) % ts;
+                int i = 1;
+                int probe_idx = (idx + i * i) % ts;
                 while (probe_idx != idx)
                 {
                     if (*table[probe_idx] == key)
@@ -99,13 +102,14 @@ public:
                         cout << "Element exists in the hash table at index: " << probe_idx << endl;
                         return;
                     }
-                    probe_idx = (probe_idx + 1) % ts;
+                    i++;
+                    probe_idx = (probe_idx + i * i) % ts;
                 }
                 cout << "Element doesn't exist in the hash table." << endl;
             }
         }
     }
-    void erase(int key) // deletes the key
+    void erase(int key)
     {
         int idx = HashFn(key);
         if (table[idx] == NULL)
@@ -123,7 +127,8 @@ public:
             }
             else
             {
-                int probe_idx = (idx + 1) % ts;
+                int i = 1;
+                int probe_idx = (idx + i * i) % ts;
                 while (probe_idx != idx)
                 {
                     if (*table[probe_idx] == key)
@@ -132,7 +137,8 @@ public:
                         cout << "Element deleted from index: " << probe_idx << endl;
                         return;
                     }
-                    probe_idx = (probe_idx + 1) % ts;
+                    i++;
+                    probe_idx = (probe_idx + i * i) % ts;
                 }
                 cout << "Element doesn't exist in the hash table." << endl;
             }

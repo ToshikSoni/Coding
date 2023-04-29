@@ -1,37 +1,28 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import java.io.*;
+import java.util.*;
 
 public class Topic8_c {
 	public static void main(String[] args) {
 		try {
-			FileReader fr = new FileReader("input.txt");
-			String hi = "";
-			int k;
-			while ((k = fr.read()) != -1)
-				hi = hi + (char) k;
-			String[] arr = hi.split(" ");
-			Arrays.sort(arr);
-			FileWriter fw = new FileWriter("output.txt");
-			int count = 0;
-			for (int i = 0; i < arr.length; i++) {
-				for (int j = 0; j < arr.length; j++)
-					if (arr[i] == arr[j])
-						if (i != j) {
-							System.out.println("in count: " + arr[i] + " " + arr[j]);
-							count++;
-						}
-				fw.write(arr[i] + " " + count + '\n');
-				count = 0;
+			BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
+			PrintWriter writer = new PrintWriter(new FileWriter("output.txt"));
+			Map<String, Integer> wordCountMap = new TreeMap<>();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				String[] words = line.split("\\s+");
+				for (String word : words) {
+					word = word.replaceAll("^[^\\p{L}\\p{N}]+|[^\\p{L}\\p{N}]+$", "");
+					if (!word.isEmpty())
+						wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
+				}
 			}
-			fr.close();
-			fw.close();
-		} catch (FileNotFoundException e) {
-			System.out.println(e);
+			for (Map.Entry<String, Integer> entry : wordCountMap.entrySet())
+				writer.println(entry.getKey() + " " + entry.getValue());
+			reader.close();
+			writer.close();
+			System.out.println("Word count completed.");
 		} catch (IOException e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 }
