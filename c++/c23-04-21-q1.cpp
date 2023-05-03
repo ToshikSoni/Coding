@@ -36,9 +36,7 @@ void printPreOrder(Node *root) // from root to leftmost to rightmost
 void printInOrder(Node *root) // from left most node to root to rightmost
 {
     if (root == NULL)
-    {
         return;
-    }
     printInOrder(root->left);
     cout << root->key << " ";
     printInOrder(root->right);
@@ -46,9 +44,7 @@ void printInOrder(Node *root) // from left most node to root to rightmost
 void printPostOrder(Node *root) // from leftmost to rightmost to root
 {
     if (root == NULL)
-    {
         return;
-    }
     printPostOrder(root->left);
     printPostOrder(root->right);
     cout << root->key << " ";
@@ -102,15 +98,51 @@ void LevelOrderPrint(Node *root)
         Q.pop();
     }
 }
+int countNode(Node *root)
+{
+    static int count = 0;
+    if (root == NULL)
+        return 0;
+    count++;
+    countNode(root->left);
+    countNode(root->right);
+    return count;
+}
+int countLeaf(Node *root)
+{
+    static int count = 0;
+    if (root == NULL)
+        return 0;
+    if (root->right == NULL && root->left == NULL)
+        count++;
+    countLeaf(root->left);
+    countLeaf(root->right);
+
+    return count;
+}
+int countFull(Node *root)
+{
+    static int count = 0;
+    if (root == NULL)
+        return 0;
+    if (root->right != NULL && root->left != NULL)
+        count++;
+    countFull(root->left);
+    countFull(root->right);
+
+    return count;
+}
 int main()
 {
-    Node *root = buildTree();
+    // Node *root = buildTree();
+    // printPreOrder(root);
+    // cout << endl;
+    // printPostOrder(root);
+    // cout << endl;
+    // printInOrder(root);
+    // cout << endl;
+    Node *root = buildLevelOrderTree();
     printPreOrder(root);
     cout << endl;
-    printPostOrder(root);
-    cout << endl;
-    printInOrder(root);
-    cout << endl;
-    Node *root1 = buildLevelOrderTree();
-    LevelOrderPrint(root1);
+    cout << "Nodes: " << countFull(root);
 }

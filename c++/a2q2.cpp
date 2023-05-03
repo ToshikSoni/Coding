@@ -105,7 +105,6 @@ public:
                     i++;
                     probe_idx = (probe_idx + i * i) % ts;
                 }
-                cout << "Element doesn't exist in the hash table." << endl;
             }
         }
     }
@@ -140,7 +139,6 @@ public:
                     i++;
                     probe_idx = (probe_idx + i * i) % ts;
                 }
-                cout << "Element doesn't exist in the hash table." << endl;
             }
         }
     }

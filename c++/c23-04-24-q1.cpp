@@ -80,17 +80,17 @@ int countLeafNodes(Node *root, int n)
     }
     return n;
 }
-int countFullNodes(Node* root,int n)
+int countFullNodes(Node *root, int n)
 {
-    if(root)
+    if (root)
     {
-        if(root->left&&root->right)
+        if (root->left && root->right)
         {
-            cout<<root->key<<" "<<endl;
+            cout << root->key << " " << endl;
             n++;
         }
-        n=countFullNodes(root->left,n);
-        n=countFullNodes(root->right,n);
+        n = countFullNodes(root->left, n);
+        n = countFullNodes(root->right, n);
     }
     return n;
 }

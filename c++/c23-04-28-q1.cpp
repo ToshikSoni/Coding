@@ -40,7 +40,7 @@ public:
         {
             int leftindex = 2 * i;
             int rightindex = 2 * i + 1;
-            if (arr[leftindex] < arr[rightindex])
+            if (arr[leftindex] < arr[rightindex] && leftindex <= size && rightindex <= size)
             {
                 if (leftindex < size && arr[leftindex] > arr[i])
                 {
@@ -61,6 +61,14 @@ public:
                     return;
             }
         }
+    }
+    void heapify()
+    {
+        
+    }
+    void heapSort()
+    {
+
     }
 };
 int main()

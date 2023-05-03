@@ -11,11 +11,11 @@ public:
 class Child : public Parent
 {
 public:
-    void show();
+    void show()
     {
         cout << "Child." << endl;
     }
-}
+};
 int main()
 {
     Child c;

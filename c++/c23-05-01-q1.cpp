@@ -1,9 +1,13 @@
 #include <iostream>
 using namespace std;
-class Base
+class 
 {
+    
+
+public:
     
 };
 int main()
 {
+    
 }

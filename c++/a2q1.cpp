@@ -34,11 +34,9 @@ public:
     }
     void insert(int key) // insert the key in the table
     {
-        bool flag = false;
         int idx = HashFn(key);
         if (table[idx] == NULL)
         {
-            flag = true;
             table[idx] = new int(key);
             return;
         }
@@ -49,18 +47,14 @@ public:
             {
                 if (table[probe_idx] == NULL)
                 {
-                    flag = true;
                     table[probe_idx] = new int(key);
                     return;
                 }
                 probe_idx = (probe_idx + 1) % ts;
             }
         }
-        if (flag == false) // rehash if the table is full
-        {
-            rehash();
-            insert(key);
-        }
+        rehash();
+        insert(key);
     }
     void print() // prints the table
     {
@@ -101,7 +95,6 @@ public:
                     }
                     probe_idx = (probe_idx + 1) % ts;
                 }
-                cout << "Element doesn't exist in the hash table." << endl;
             }
         }
     }
@@ -134,7 +127,6 @@ public:
                     }
                     probe_idx = (probe_idx + 1) % ts;
                 }
-                cout << "Element doesn't exist in the hash table." << endl;
             }
         }
     }

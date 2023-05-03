@@ -26,14 +26,15 @@ int main()
                 if (line[i] == ' ')
                     continue;
                 if (line[i] == ',')
-                    temp = 2;
+                    break;
                 else
                     tempage += line[i];
             }
         }
         age = stoi(tempage);
         fout << "Name: " << name << ", Age: " << age << ", Birth Year: " << (2023 - age) << endl;
-        tempage="";
-        name="";
+        tempage = "";
+        name = "";
     }
+    cout<<"Done";
 }

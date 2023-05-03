@@ -1,5 +1,4 @@
 #include <iostream>
-#include <queue>
 using namespace std;
 class Node
 {
@@ -52,5 +51,5 @@ int main()
     Node *root = buildTree();
     printPreOrder(root);
     cout << endl
-         << "depth of node: " << depthNode(root, 8);
+         << "depth of node: " << depthNode(root, 5) - 1;
 }
