@@ -3,5 +3,12 @@
         "stdio.h": "c",
         "iostream": "cpp",
         "ostream": "cpp"
-    }
+    },
+    "java.project.sourcePaths": [
+        "java"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "java\\JDBC\\lib\\mysql-connector-java-8.0.30.jar"
+    ]
 }

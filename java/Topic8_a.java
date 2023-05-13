@@ -13,7 +13,7 @@ public class Topic8_a {
 			System.out.print("\nEnter index of element: ");
 			int index = sc.nextInt();
 			System.out.println("Element is: " + arr[index]);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (Exception e) {
 			System.out.println(e);
 		}
 		sc.close();

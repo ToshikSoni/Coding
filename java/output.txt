@@ -1,9 +1,3 @@
-are 1
-hello 2
-hi 2
-how 1
-is 1
-my 1
-name 1
-toshik 2
-you 1
+bye: 1
+hello: 2
+hi: 2

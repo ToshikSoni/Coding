@@ -1,7 +1,4 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Topic8_b {
 	public static void main(String[] args) {
@@ -17,9 +14,7 @@ public class Topic8_b {
 				fout1.write((char) i);
 			fout1.close();
 			fin.close();
-		} catch (FileNotFoundException e) {
-			System.out.println(e);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}

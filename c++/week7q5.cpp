@@ -30,32 +30,34 @@ public:
     {
         if (size == 0)
         {
-            cout << "Threre is nothing to delete" << endl;
+            cout << "there is nothing to delete";
             return;
         }
         arr[1] = arr[size];
+
         size--;
+
         int i = 1;
         while (i < size)
         {
-            int leftindex = 2 * i;
-            int rightindex = 2 * i + 1;
-            if (arr[leftindex] < arr[rightindex] && leftindex <= size && rightindex <= size)
+            int leftIndex = 2 * i;
+            int rightIndex = 2 * i + 1;
+            if (arr[leftIndex] < arr[rightIndex])
             {
-                if (leftindex < size && arr[leftindex] > arr[i])
+                if (rightIndex < size && arr[i] < arr[rightIndex])
                 {
-                    swap(arr[i], arr[leftindex]);
-                    i = leftindex;
+                    swap(arr[i], arr[rightIndex]);
+                    i = rightIndex;
                 }
                 else
                     return;
             }
             else
             {
-                if (rightindex < size && arr[rightindex] > arr[i])
+                if (leftIndex < size && arr[i] < arr[leftIndex])
                 {
-                    swap(arr[i], arr[rightindex]);
-                    i = rightindex;
+                    swap(arr[i], arr[leftIndex]);
+                    i = leftIndex;
                 }
                 else
                     return;
@@ -63,27 +65,4 @@ public:
         }
     }
     void heapify()
-    {
-        
-    }
-    void heapSort()
-    {
-
-    }
 };
-int main()
-{
-    heap h;
-    int n;
-    cout << "Enter size of array: ";
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        h.insert(x);
-    }
-    h.deleteHeap();
-    for (int i = 1; i <= h.size; i++)
-        cout << h.arr[i] << " ";
-}

@@ -1,38 +1,34 @@
-import java.util.Scanner;
+import java.sql.*;
 
 public class testtt {
-	public static void main(String args[]) {
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter size of array: ");
-		int size = sc.nextInt(), b = 0, b1 = 0;
-		int[] arr;
-		arr = new int[size];
-		System.out.println("Enter elements of array: ");
-		for (int i = 0; i < size; i++)
-			arr[i] = sc.nextInt();
-		if (arr[0] < arr[size - 1]) {
-			b = arr[0];
-			b1 = arr[0];
-		}
-		else {
-			b = arr[size - 1];
-			b1 = arr[size - 1];
-		}
-		for (int i = 0; i < size; i++)
-			if (b > arr[i]) {
-				b = arr[i];
-				b1 = arr[i];
+	public static void main(String[] args) {
+		String dbURL = "jdbc:mysql://localhost:3306/mydatabase";
+		String username = "root";
+		String password = "mypassword";
+		try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
+			Statement stmt = conn.createStatement();
+			String query = "SELECT customer_name, order_date, product_name, quantity " +
+					"FROM customers " +
+					"JOIN orders ON customers.customer_id = orders.customer_id " +
+					"JOIN order_items ON orders.order_id = order_items.order_id " +
+					"JOIN products ON order_items.product_id = products.product_id";
+			ResultSet rs = stmt.executeQuery(query);
+			ResultSetMetaData rsmd = rs.getMetaData();
+			int numColumns = rsmd.getColumnCount();
+			for (int i = 1; i <= numColumns; i++)
+				System.out.print(rsmd.getColumnName(i) + "\t");
+			System.out.println();
+			while (rs.next()) {
+				for (int i = 1; i <= numColumns; i++)
+					System.out.print(rs.getString(i) + "\t");
+				System.out.println();
 			}
-		if (arr[0] > arr[size - 1])
-			b = arr[size - 1];
-		else
-			b = arr[0];
-		for (int i = 0; i < size; i++)
-			if (b > arr[i])
-				if (arr[i] != b1)
-					b = arr[i];
-		sc.close();
-		System.out.println(
-				"The largest number is: " + b1 + "\nAnd the second largest number is: " + b);
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			System.out.println("SQLException: " + e.getMessage());
+			System.out.println("SQLState: " + e.getSQLState());
+			System.out.println("VendorError: " + e.getErrorCode());
+		}
 	}
 }

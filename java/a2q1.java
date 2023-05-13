@@ -28,9 +28,9 @@ public class a2q1 {
         } catch (Exception e) {
             System.out.println(e);
         }
-        if (lineNumbers.isEmpty()) {
+        if (lineNumbers.isEmpty())
             System.out.println("Word not found in file.");
-        } else {
+        else {
             System.out.print("Word found in line(s): ");
             for (int temp : lineNumbers)
                 System.out.println(temp + " ");

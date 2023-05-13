@@ -5,24 +5,33 @@ public class Topic8_c {
 	public static void main(String[] args) {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
-			PrintWriter writer = new PrintWriter(new FileWriter("output.txt"));
-			Map<String, Integer> wordCountMap = new TreeMap<>();
+			ArrayList<String> words = new ArrayList<>();
 			String line;
 			while ((line = reader.readLine()) != null) {
-				String[] words = line.split("\\s+");
-				for (String word : words) {
-					word = word.replaceAll("^[^\\p{L}\\p{N}]+|[^\\p{L}\\p{N}]+$", "");
-					if (!word.isEmpty())
-						wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
-				}
+				String[] lineWords = line.toLowerCase().split(" ");
+				for (String word : lineWords)
+					words.add(word);
 			}
-			for (Map.Entry<String, Integer> entry : wordCountMap.entrySet())
-				writer.println(entry.getKey() + " " + entry.getValue());
 			reader.close();
+			Collections.sort(words);
+			FileWriter writer = new FileWriter("output.txt");
+			String currentWord = "";
+			int currentCount = 0;
+			for (String word : words)
+				if (word.equals(currentWord))
+					currentCount++;
+				else {
+					if (!currentWord.isEmpty())
+						writer.write(currentWord + ": " + currentCount + "\n");
+					currentWord = word;
+					currentCount = 1;
+				}
+			if (!currentWord.isEmpty())
+				writer.write(currentWord + ": " + currentCount + "\n");
 			writer.close();
-			System.out.println("Word count completed.");
+			System.out.println("Word counts written to output file.");
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println("Error reading or writing file: " + e.getMessage());
 		}
 	}
 }
