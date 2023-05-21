@@ -3,27 +3,42 @@ using namespace std;
 class A
 {
 public:
-    void show()
+    void virtual show()
     {
-        cout << "A";
+        cout << "A" << endl;
     }
 };
 class B : virtual public A
 {
+public:
+    void show()
+    {
+        cout << "B" << endl;
+    }
 };
 class C : virtual public A
 {
+public:
+    void show()
+    {
+        cout << "C" << endl;
+    }
 };
 class D : public B, public C
 {
-    public:
+public:
     void show()
     {
-        cout<<"D";
+        cout << "D";
     }
 };
 int main()
 {
-    D a;
-    a.show();
+    A a;
+    B b;
+    C c;
+    D d;
+    A *ptr;
+    ptr = &c;
+    ptr->show();
 }

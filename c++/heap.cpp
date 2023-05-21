@@ -1,5 +1,12 @@
 #include <iostream>
 using namespace std;
+void swap(int &a,int &b)
+{
+    int c;
+    c=a;
+    a=b;
+    b=c;
+}
 class heap
 {
 public:
@@ -9,11 +16,11 @@ public:
         arr[0] = -1;
         size = 0;
     }
-    void insert(int val)
+    void insert(int value)
     {
-        size = size + 1;
+        size++;
         int index = size;
-        arr[index] = val;
+        arr[index] = value;
         while (index > 1)
         {
             int parent = index / 2;
@@ -28,40 +35,36 @@ public:
     }
     void deleteHeap()
     {
-        if (size == 0)
-        {
-            cout << "there is nothing to delete";
-            return;
-        }
         arr[1] = arr[size];
-
         size--;
-
         int i = 1;
         while (i < size)
         {
-            int leftIndex = 2 * i;
-            int rightIndex = 2 * i + 1;
-            if (arr[leftIndex] < arr[rightIndex])
+            int left = i * 2;
+            int right = i * 2 + 1;
+            if (left <= size && right <= size)
             {
-                if (rightIndex < size && arr[i] < arr[rightIndex])
+                if (arr[i] < arr[left])
                 {
-                    swap(arr[i], arr[rightIndex]);
-                    i = rightIndex;
+                    swap(arr[i], arr[left]);
                 }
-                else
-                    return;
+                if (arr[i] < arr[right])
+                {
+                    swap(arr[i], arr[right]);
+                }
             }
-            else
+            else if (left <= size)
             {
-                if (leftIndex < size && arr[i] < arr[leftIndex])
+                if (arr[i] < arr[left])
                 {
-                    swap(arr[i], arr[leftIndex]);
-                    i = leftIndex;
+                    swap(arr[i], arr[left]);
                 }
-                else
-                    return;
             }
+            else if (left > size && right > size)
+            {
+                return;
+            }
+            i++;
         }
     }
     void heapify(int arr1[], int size1)
@@ -115,11 +118,27 @@ public:
             swap(temparr[0], temparr[temp - 1]);
             temp--;
             heapify(temparr, temp);
-            for (int i = 0; i < temp; i++)
+            for(int i=0;i<temp;i++)
             {
-                temparr[i] = arr[i + 1];
+                temparr[i]=arr[i+1];
             }
         }
         size = temp1;
     }
 };
+int main()
+{
+    heap h;
+    int n;
+    cout << "Enter size of array: ";
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cin >> x;
+        h.insert(x);
+    }
+    h.heapsort();
+    for (int i = 1; i <= h.size; i++)
+        cout << h.arr[i] << " ";
+}
