@@ -60,7 +60,6 @@ Node *buildLevelOrderTree()
     while (!Q.empty())
     {
         Node *current = Q.front();
-
         cout << "\nCurrent node: " << current->key << endl;
         cout << "Enter child nodes value: ";
         cin >> c1;

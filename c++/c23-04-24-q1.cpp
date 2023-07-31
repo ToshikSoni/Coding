@@ -24,7 +24,6 @@ Node *insert(Node *root, int key)
 }
 void printInOrder(Node *root)
 {
-    static int count = 0;
     if (root == NULL)
         return;
     printInOrder(root->left);

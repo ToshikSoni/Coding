@@ -1,0 +1,1 @@
+swipl -l "C:\Users\tsoni\OneDrive\Desktop\coding\prolog\FileName.pl"

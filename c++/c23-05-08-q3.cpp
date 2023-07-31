@@ -21,9 +21,9 @@ void breadth_first_search(int adj[][MAX], int visited[], int start)
 void depth_first_search(int adj[][MAX], int visited[], int start)
 {
     int stack[MAX], top = -1, i;
-    cout << (char)(start + 65) << "\t";
-    visited[start] = 1;
     stack[++top] = start;
+    visited[start] = 1;
+    cout << (char)(start + 65) << "\t";
     while (top != -1)
     {
         start = stack[top];
@@ -31,8 +31,8 @@ void depth_first_search(int adj[][MAX], int visited[], int start)
             if (adj[start][i] && visited[i] == 0)
             {
                 stack[++top] = i;
-                cout << (char)(i + 65) << "\t";
                 visited[i] = 1;
+                cout << (char)(i + 65) << "\t";
                 break;
             }
         if (i == MAX)
